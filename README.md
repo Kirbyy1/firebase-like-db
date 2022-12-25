@@ -11,25 +11,22 @@ A Python class that simulates a real-time database and saves the data in a JSON 
 db = RealtimeDatabase('database.json')
 
 # Set data
-db.child('users/alice').set({'name': 'Alice', 'age': 25})
+db.child('users').child('alice').set({'name': 'Alice', 'age': 25})
 
 # Get data
-print(db.child('users/alice').get())  # {'name': 'Alice', 'age': 25}
+print(db.child('users').child('alice').get())  # {'name': 'Alice', 'age': 25}
 
 # Delete data
-db.child('users/alice').delete()
+db.child('users').child('alice').delete()
 
 # Register a change listener
 def on_change(data):
     print(f'Data at path "users/alice" has changed: {data}')
 
-db.child('users/alice').on_change(on_change)
+db.child('users').child('alice').on_change(on_change)
 
 # Set data, which will trigger the change listener
-db.child('users/alice').set({'name': 'Alice', 'age': 25})  # Prints "Data at path "users/alice" has changed: {'name': 'Alice', 'age': 25}"
-
-# Generate a random key and set data
-db.child().set({'name': 'Bob', 'age': 30})  # The path of the data will be a random key
+db.child('users').child('alice').set({'name': 'Alice', 'age': 25})  # Prints "Data at path "users/alice" has changed: {'name': 'Alice', 'age': 25}"
 ```
 
 # Requirements
