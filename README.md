@@ -31,3 +31,6 @@ db.child('users/alice').set({'name': 'Alice', 'age': 25})  # Prints "Data at pat
 # Generate a random key and set data
 db.child().set({'name': 'Bob', 'age': 30})  # The path of the data will be a random key
 ```
+
+# Requirements
+* Python 3.5 or higher
